@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 120,
+      "minLength": 3
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "recipe_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::recipe-category.recipe-category",
+      "inversedBy": "recipes"
+    },
+    "author": {
+      "type": "enumeration",
+      "enum": [
+        "Lorelei",
+        "Guillaume"
+      ],
+      "default": "Lorelei",
+      "required": true
+    }
+  }
+}
